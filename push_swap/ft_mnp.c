@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 13:09:13 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/17 08:41:39 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:38:36 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@ t_list *sa(t_list *s)
 {
     if(ft_lstsize(s) > 1)
     {
-        char *temp;
+        int temp;
+        int index;
+        
         temp = s->content;
+        index = s->index;
     
         s->content = s->next->content;
+        s->index = s->next->index;
         s->next->content = temp;
+        s->next->index = index;
     }
     return(s);
 }
@@ -29,11 +34,16 @@ t_list *sb(t_list *s)
 {
     if(ft_lstsize(s) > 1)
     {
-        char *temp;
+        int temp;
+        int index;
+        
         temp = s->content;
+        index = s->index;
     
         s->content = s->next->content;
+        s->index = s->next->index;
         s->next->content = temp;
+        s->next->index = index;
     }
     return(s);
 }

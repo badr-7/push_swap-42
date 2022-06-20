@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 13:11:00 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/18 10:03:13 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:00:07 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 
 #include<unistd.h>
 #include<stdlib.h>
+#include<stdbool.h>
+#include<stdio.h>
 // #include"libft/libft.h"
 
 typedef struct s_list
 {
-	void			*content;
+	int			content;
 	struct s_list	*next;
     int index;
+	bool a;
 }					t_list;
 
 char	*ft_strdup(const char *src);
@@ -34,7 +37,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstdelone(t_list *lst);
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(int content);
 int	ft_lstsize(t_list *lst);
 // stack manupulation functions
 t_list *sa(t_list *s);
@@ -48,7 +51,16 @@ t_list *rrb(t_list *s);
 void rrr(t_list *a, t_list *b);
 t_list *pa(t_list **a, t_list **b);
 t_list *pb(t_list **a, t_list **b);
-
+void ft_indexing(t_list **stack);
+void greater_than(t_list **stack_a);
+int	markup(t_list *lst);
+void sa_stat(t_list *a);
+void starting(t_list **s , char **a);
+void ft_ft(char **s , t_list **stack_a);
+void ft_find_double(t_list *s, int a);
+void ft_free(char **s);
+void check_alpha(char *str);
+void ft_pushb(t_list **stack_a, t_list **stack_b);
 
 
 

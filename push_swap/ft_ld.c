@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:37:04 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/18 09:45:35 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/19 11:03:22 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	{
 		tmp = *lst;
 		*lst = (*lst)->next;
-		del((tmp)->content);
+		// del((tmp)->content);
 		free(tmp);
 	}
 }
@@ -54,16 +54,6 @@ void	ft_lstdelone(t_list *lst)
 	free(lst);
 }
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
-{
-	if (!f)
-		return ;
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
-}
 
 t_list	*ft_lstlast(t_list *lst)
 {
@@ -74,7 +64,7 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*s;
 

@@ -6,73 +6,83 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 13:09:13 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/20 16:38:36 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:01:29 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-t_list *sa(t_list *s)
+void    sa(t_list **s)
 {
-    if(ft_lstsize(s) > 1)
+    if(ft_lstsize(*s) > 1)
     {
         int temp;
         int index;
         
-        temp = s->content;
-        index = s->index;
+        temp = (*s)->content;
+        index = (*s)->index;
     
-        s->content = s->next->content;
-        s->index = s->next->index;
-        s->next->content = temp;
-        s->next->index = index;
+        (*s)->content = (*s)->next->content;
+        (*s)->index = (*s)->next->index;
+        (*s)->next->content = temp;
+        (*s)->next->index = index;
     }
-    return(s);
 }
 
-t_list *sb(t_list *s)
+void    sb(t_list **s)
 {
-    if(ft_lstsize(s) > 1)
+    if(ft_lstsize(*s) > 1)
     {
         int temp;
         int index;
         
-        temp = s->content;
-        index = s->index;
+        temp = (*s)->content;
+        index = (*s)->index;
     
-        s->content = s->next->content;
-        s->index = s->next->index;
-        s->next->content = temp;
-        s->next->index = index;
+        (*s)->content = (*s)->next->content;
+        (*s)->index = (*s)->next->index;
+        (*s)->next->content = temp;
+        (*s)->next->index = index;
     }
-    return(s);
 }
 
-void ss(t_list *a,t_list *b)
+void ss(t_list **a,t_list **b)
 {
-    a = sa(a);
-    b = sb(b);
+    sa(a);
+    sb(b);
 }
 
-t_list *rra(t_list *s)
+void rra(t_list **s)
 {
     t_list *temp2;
-    
-    temp2 = ft_lstlast(s);
-    temp2->next = s;
-    s = temp2;
-    return(temp2);
+    t_list *temp1;
+
+	temp1 = *s;
+	temp2 = NULL;
+	while (temp1 && temp1->next)
+	{
+		temp2 = temp1;
+		temp1 = temp1->next;
+	}
+    if (temp2)
+	{
+		temp1->next = *s;
+		*s = temp1;
+		temp2->next = NULL;
+	}
 }
-t_list *ra(t_list *s)
+void ra(t_list **s)
 {
-    t_list *temp2;
-    t_list *temp;
-    
-    temp = s->next;
-    temp2 = ft_lstlast(s);
-    s->next = NULL;
-    temp2->next = s;
-    return(temp);
+    t_list	*tmp;
+
+	tmp = *s;
+	if (tmp && tmp->next)
+	{
+		*s = tmp->next;
+		ft_lstlast(*s)->next = tmp;
+		tmp->next = NULL;
+	}
+    // return(temp);
 }
 
 t_list *rb(t_list *s)
@@ -89,24 +99,34 @@ t_list *rb(t_list *s)
 
 void rr(t_list *a, t_list *b)
 {
-    a = ra(a);
+    ra(&a);
     b = rb(b);
 }
 
-t_list *rrb(t_list *s)
+void    rrb(t_list **s)
 {
     t_list *temp2;
-    
-    temp2 = ft_lstlast(s);
-    temp2->next = s;
-    s = temp2;
-    return(temp2);
+    t_list *temp1;
+
+	temp1 = *s;
+	temp2 = NULL;
+	while (temp1 && temp1->next)
+	{
+		temp2 = temp1;
+		temp1 = temp1->next;
+	}
+    if (temp2)
+	{
+		temp1->next = *s;
+		*s = temp1;
+		temp2->next = NULL;
+	}
 }
 
 void rrr(t_list *a, t_list *b)
 {
-    a = rra(a);
-    b = rrb(b);
+    rra(&a);
+    rrb(b);
 }
 
 t_list *pa(t_list **a, t_list **b)

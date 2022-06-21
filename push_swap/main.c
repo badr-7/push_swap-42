@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:20:42 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/20 16:31:01 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:58:45 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ int main(int ac, char **av)
     s[j] = NULL;
     i = 0;
     starting(&stack_a, s);
-    ft_pushb(&stack_a, &stack_b);
+    // ft_pushb(&stack_a, &stack_b);
     printList(stack_a);
-    puts ("b\n");
-    printList(stack_b);
+    ra(&stack_a);
+    puts("\n");
+    printList(stack_a);
     
     // while (stack_a)
     // {

@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:20:48 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/20 16:59:39 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:24:10 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void    markup_reset(t_list *lst)
 {
 	while (lst)
 	{
-		lst->a = false;
+		lst->keep = false;
 		lst = lst->next;
 	}
 }
@@ -51,14 +51,14 @@ int markup_at(t_list *lst, t_list *mh)
 
 	count = 1;
 	max = mh->content;
-	mh->a = true;
+	mh->keep = true;
 	size = ft_lstsize(lst);
 	while (size--)
 	{
 		if (mh->content >= max)
 		{
 			max = mh->content;
-			mh->a = true;
+			mh->keep = true;
 			count++;
 		}
 		if (!mh->next)
@@ -101,17 +101,16 @@ void sa_stat(t_list *a)
 	int count1;
 	int count2;
 
-	markup_reset(a);
 	count1 = markup(a);
-	sa(a);
-	markup_reset(a);
+	sa(&a);
 	count2 = markup(a);
-	if (count1 > count2)
+	if (count1 >= count2)
 	{
-		sa(a);
-		markup_reset(a);
+		sa(&a);
 		markup(a);
 	}
+	else
+		write(1,"sa\n", 3);
 }
 
  void starting(t_list **s , char **a)

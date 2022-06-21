@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 13:11:00 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/20 16:00:07 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:59:05 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list
 	int			content;
 	struct s_list	*next;
     int index;
-	bool a;
+	bool keep;
 }					t_list;
 
 char	*ft_strdup(const char *src);
@@ -40,14 +40,14 @@ void	ft_lstdelone(t_list *lst);
 t_list	*ft_lstnew(int content);
 int	ft_lstsize(t_list *lst);
 // stack manupulation functions
-t_list *sa(t_list *s);
-t_list *sb(t_list *s);
-void ss(t_list *a,t_list *b);
-t_list *rra(t_list *s);
-t_list *ra(t_list *s);
+void sa(t_list **s);
+void	sb(t_list **s);
+void ss(t_list **a,t_list **b);
+void rra(t_list **s);
+void ra(t_list **s);
 t_list *rb(t_list *s);
 void rr(t_list *a, t_list *b);
-t_list *rrb(t_list *s);
+void	rrb(t_list **s);
 void rrr(t_list *a, t_list *b);
 t_list *pa(t_list **a, t_list **b);
 t_list *pb(t_list **a, t_list **b);

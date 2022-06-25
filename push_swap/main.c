@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:20:42 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/21 13:58:45 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/25 11:05:09 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,18 @@
 
 void printList(t_list *n)
 {
-    while (n != NULL) {
-        printf(" %d \n", n->content);
+    while (n) {
+        printf(" %d \n", n->index);
         n = n->next;
+    }
+}
+
+void    print_stack(t_list *stack)
+{
+    while (stack)
+    {
+        printf("%d\n", stack->content);
+        stack = stack->next;
     }
 }
 
@@ -46,15 +55,6 @@ int main(int ac, char **av)
     s[j] = NULL;
     i = 0;
     starting(&stack_a, s);
-    // ft_pushb(&stack_a, &stack_b);
-    printList(stack_a);
-    ra(&stack_a);
-    puts("\n");
-    printList(stack_a);
-    
-    // while (stack_a)
-    // {
-    //     printf("%s\n", (stack_a->a ? "true" : "false"));
-    //     stack_a = stack_a->next;
-    // }
+    ft_pushb(&stack_a, &stack_b);
+    ft_pusha(&stack_a, &stack_b);
 }

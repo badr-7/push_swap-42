@@ -6,13 +6,13 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 13:09:13 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/21 14:01:29 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/25 10:47:56 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void    sa(t_list **s)
+void    sa(t_list **s, int i)
 {
     if(ft_lstsize(*s) > 1)
     {
@@ -26,6 +26,8 @@ void    sa(t_list **s)
         (*s)->index = (*s)->next->index;
         (*s)->next->content = temp;
         (*s)->next->index = index;
+		if (i == 1)
+			write(1, "sa\n", 3);
     }
 }
 
@@ -43,16 +45,17 @@ void    sb(t_list **s)
         (*s)->index = (*s)->next->index;
         (*s)->next->content = temp;
         (*s)->next->index = index;
+		write(1,"sb\n", 1);
     }
 }
 
 void ss(t_list **a,t_list **b)
 {
-    sa(a);
+    sa(a, 1);
     sb(b);
 }
 
-void rra(t_list **s)
+void rra(t_list **s, int i)
 {
     t_list *temp2;
     t_list *temp1;
@@ -70,8 +73,10 @@ void rra(t_list **s)
 		*s = temp1;
 		temp2->next = NULL;
 	}
+	if(i == 1)
+		write(1, "rra\n", 4);
 }
-void ra(t_list **s)
+void ra(t_list **s, int i)
 {
     t_list	*tmp;
 
@@ -81,29 +86,34 @@ void ra(t_list **s)
 		*s = tmp->next;
 		ft_lstlast(*s)->next = tmp;
 		tmp->next = NULL;
-	}
-    // return(temp);
+    }
+	if(i == 1)
+		write(1, "ra\n", 3);
 }
 
-t_list *rb(t_list *s)
+void rb(t_list **s, int i)
 {
-    t_list *temp2;
-    t_list *temp;
-    
-    temp = s->next;
-    temp2 = ft_lstlast(s);
-    s->next = NULL;
-    temp2->next = s;
-    return(temp);
+    t_list	*tmp;
+
+	tmp = *s;
+	if (tmp && tmp->next)
+	{
+		*s = tmp->next;
+		ft_lstlast(*s)->next = tmp;
+		tmp->next = NULL;
+    }
+	if(i == 1)
+		write(1, "rb\n", 3);
 }
 
-void rr(t_list *a, t_list *b)
+void rr(t_list **a, t_list **b)
 {
-    ra(&a);
-    b = rb(b);
+    ra(a, 0);
+    rb(b, 0);
+	write(1, "rr\n", 3);
 }
 
-void    rrb(t_list **s)
+void    rrb(t_list **s, int i)
 {
     t_list *temp2;
     t_list *temp1;
@@ -121,40 +131,43 @@ void    rrb(t_list **s)
 		*s = temp1;
 		temp2->next = NULL;
 	}
+	if(i == 1)
+		write(1, "rrb\n", 4);
 }
 
-void rrr(t_list *a, t_list *b)
+void rrr(t_list **a, t_list **b)
 {
-    rra(&a);
-    rrb(b);
+    rra(a, 0);
+    rrb(b, 0);
+	write(1,"rrr\n", 4);
 }
 
-t_list *pa(t_list **a, t_list **b)
+void    pa(t_list **a, t_list **b)
 {
-    t_list *temp;
-    t_list *temp2;
+    t_list	*tmp;
 
-    temp = ft_lstnew((*b)->content);
-    temp->next = *a;
-    temp2 = *b;
-    *b = (*b)->next;
-    ft_lstdelone(temp2);
-    *a = temp;
-    return(*a);
+	tmp = *b;
+	if (tmp)
+	{
+		*b = tmp->next;
+		tmp->next = *a;
+		*a = tmp;
+	}
+	write(1,"pa\n", 3);
 }
 
-t_list *pb(t_list **a, t_list **b)
+void pb(t_list **a, t_list **b)
 {
-    t_list *temp;
-    t_list *temp2;
+    t_list	*tmp;
 
-    temp = ft_lstnew((*a)->content);
-    temp->next = *b;
-    temp2 = *a;
-    *a = (*a)->next;
-    ft_lstdelone(temp2);
-    *b = temp;
-    return(*b);
+	tmp = *a;
+	if (tmp)
+	{
+		*a = tmp->next;
+		tmp->next = *b;
+		*b = tmp;
+	}
+	write(1,"pb\n", 3);
 }
 
 // int main()

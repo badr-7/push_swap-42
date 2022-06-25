@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:20:48 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/21 13:24:10 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/25 10:18:18 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	markup(t_list *lst)
 		|| (count == best_count && mh->index < best_mh->index))
 		{
 			best_count = count;
-			best_mh = mh;			
+			best_mh = mh;
 		}
 		mh = mh->next;
 	}
@@ -96,21 +96,21 @@ int	markup(t_list *lst)
 	return (best_count);
 }
 
-void sa_stat(t_list *a)
+void sa_stat(t_list **a)
 {
 	int count1;
 	int count2;
 
-	count1 = markup(a);
-	sa(&a);
-	count2 = markup(a);
+	count1 = markup(*a);
+	sa(a, 0);
+	count2 = markup(*a);
 	if (count1 >= count2)
 	{
-		sa(&a);
-		markup(a);
+		sa(a, 0);
+		markup(*a);
 	}
 	else
-		write(1,"sa\n", 3);
+	 	write(1,"sa\n", 3);
 }
 
  void starting(t_list **s , char **a)
@@ -118,6 +118,6 @@ void sa_stat(t_list *a)
 	ft_ft(a, s);
 	ft_indexing(s);
 	markup(*s);
-	sa_stat(*s);
+	sa_stat(s);
 	 
  }

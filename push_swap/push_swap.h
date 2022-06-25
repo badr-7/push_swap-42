@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 13:11:00 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/21 13:59:05 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/25 10:49:14 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,30 @@ void	ft_lstdelone(t_list *lst);
 t_list	*ft_lstnew(int content);
 int	ft_lstsize(t_list *lst);
 // stack manupulation functions
-void sa(t_list **s);
+void sa(t_list **s, int i);
 void	sb(t_list **s);
 void ss(t_list **a,t_list **b);
-void rra(t_list **s);
-void ra(t_list **s);
-t_list *rb(t_list *s);
-void rr(t_list *a, t_list *b);
-void	rrb(t_list **s);
-void rrr(t_list *a, t_list *b);
-t_list *pa(t_list **a, t_list **b);
-t_list *pb(t_list **a, t_list **b);
+void rra(t_list **s, int i);
+void ra(t_list **s, int i);
+void rb(t_list **s, int i);
+void rr(t_list **a, t_list **b);
+void	rrb(t_list **s, int i);
+void rrr(t_list **a, t_list **b);
+void	pa(t_list **a, t_list **b);
+void pb(t_list **a, t_list **b);
 void ft_indexing(t_list **stack);
 void greater_than(t_list **stack_a);
 int	markup(t_list *lst);
-void sa_stat(t_list *a);
+void sa_stat(t_list **a);
 void starting(t_list **s , char **a);
 void ft_ft(char **s , t_list **stack_a);
 void ft_find_double(t_list *s, int a);
 void ft_free(char **s);
 void check_alpha(char *str);
 void ft_pushb(t_list **stack_a, t_list **stack_b);
+int ft_pos(t_list *stack, int n);
+int check_mvt(t_list **stack_a, t_list **stack_b);
+void ft_pusha(t_list **stack_a, t_list **stack_b);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:20:42 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/26 15:23:59 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/27 13:51:47 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ int	main(int ac, char **av)
 	t_list	*stack_b;
 
 	if (ac < 2)
-	{
-		write(1, "ERROR\n", 6);
-		exit(1);
-	}
+		return (0);
 	i = 1;
 	j = 0;
 	s = malloc(sizeof(char *) * ac);
@@ -38,4 +35,5 @@ int	main(int ac, char **av)
 	starting(&stack_a, s);
 	ft_pushb(&stack_a, &stack_b);
 	ft_pusha(&stack_a, &stack_b);
+	return (0);
 }

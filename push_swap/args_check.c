@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:33:52 by mel-hous          #+#    #+#             */
-/*   Updated: 2022/06/26 17:28:20 by mel-hous         ###   ########.fr       */
+/*   Updated: 2022/06/27 13:50:13 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ void	check_alpha(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '+' || str[i] == '-')
+	if ((str[i] == '+' || str[i] == '-') && str[i + 1] == '\0')
+	{
+		write(2, "Error\n", 6);
+		exit (1);
+	}
+	if ((str[i] == '+' || str[i] == '-'))
 		i++;
 	while (str[i] != '\0')
 	{
@@ -70,11 +75,13 @@ void	creat_stack(char **s, t_list **stack_a)
 	int		i;
 	int		j;
 
-	j = 0;
 	i = 0;
 	while (s[i])
 	{
+		j = 0;
 		tmp = ft_split(s[i], ' ');
+		if (tmp[0] == NULL)
+			exit (write(1, "ERROR\n", 6));
 		while (tmp[j] != NULL)
 		{
 			if (!*stack_a)
@@ -86,7 +93,6 @@ void	creat_stack(char **s, t_list **stack_a)
 			}
 			j++;
 		}
-		j = 0;
 		ft_free(tmp);
 		i++;
 	}
